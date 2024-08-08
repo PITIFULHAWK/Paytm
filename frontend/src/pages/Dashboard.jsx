@@ -5,14 +5,20 @@ import { Users } from '../components/User'
 import axios from 'axios'
 
 const Dashboard = () => {
-  const [balance,setBalance] = useState(0);
+  const [balance, setBalance] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/v1/account/balance")
-    .then(response => {
-      setBalance(response.data.balance);
+    const token = localStorage.getItem("token");
+    axios.get("http://localhost:3000/api/v1/account/balance", {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then(response => {
+        setBalance(response.data.balance);
       })
-  },[])
+  }, [])
 
   return (
     <div>
