@@ -4,8 +4,12 @@ import { SubHeading } from '../components/SubHeading'
 import { InputBox } from '../components/InputBox'
 import { Button } from '../components/Button'
 import { BottomWarning } from '../components/BottomWarning'
+import { useNavigate } from "react-router-dom"
+
 
 const Signin = () => {
+  const navigate = useNavigate();
+
   return (
     <div className='bg-slate-300 h-screen flex justify-center'>
         <div className='flex justify-center flex-col'>
@@ -14,7 +18,10 @@ const Signin = () => {
                 <SubHeading lable={"Enter your credentials to access your account"}/>
                 <InputBox lable={"Email"} placeholder={"jhon_doe@gmail.com"}/>
                 <InputBox lable={"Password"} placeholder={"Password"}/>
-                <div className='pt-4'>
+                <div className='pt-4' onClick={() => {
+                  // localStorage.setItem("token",response.data.token);
+                  navigate("/dashboard");
+                }}>
                     <Button lable={"Sign in"} />
                 </div>
                 <BottomWarning lable={"Don't have an account?"} buttonText={"Sign up"} to={"/signup"}/>
