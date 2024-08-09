@@ -3,13 +3,14 @@ import { AppBar } from '../components/AppBar'
 import { Balance } from '../components/Balance'
 import { Users } from '../components/User'
 import axios from 'axios'
+import { API_BASE_URL } from '../components/BackLink'
 
 const Dashboard = () => {
   const [balance, setBalance] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3000/api/v1/account/balance", {
+    axios.get(API_BASE_URL+"/account/balance", {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,

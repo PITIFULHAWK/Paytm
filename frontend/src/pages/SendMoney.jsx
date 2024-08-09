@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {useSearchParams} from "react-router-dom";
 import axios from 'axios'
+import { API_BASE_URL } from '../components/BackLink';
 
 export const SendMoney = () => {
     const [searchParams] = useSearchParams();
@@ -30,7 +31,7 @@ export const SendMoney = () => {
                                 }} type="number" className='flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm' id='amount' placeholder='Enter amount' />
                             </div>
                             <button onClick={() => {
-                                axios.post("http://localhost:3000/api/v1/account/transfer",{
+                                axios.post(API_BASE_URL+"/account/transfer",{
                                     to:id,
                                     amount
                                 },{

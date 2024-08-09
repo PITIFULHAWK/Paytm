@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button } from './Button'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from './BackLink';
 
 export const Users = () => {
 
@@ -10,7 +11,7 @@ export const Users = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("token")
-        axios.get("http://localhost:3000/api/v1/user/bulk?filter=" + filter,{
+        axios.get(API_BASE_URL+"/user/bulk?filter=" + filter,{
             headers: {
                 "Content-Type": "application/json",
                 'Authorization': `Bearer ${token}`

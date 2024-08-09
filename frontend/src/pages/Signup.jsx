@@ -7,6 +7,7 @@ import { BottomWarning } from '../components/BottomWarning'
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
+import { API_BASE_URL } from '../components/BackLink'
 
 const Signup = () => {
 
@@ -35,7 +36,7 @@ const Signup = () => {
                   setPassword(e.target.value);
                 }} lable={"Password"} placeholder={"Password"}/>
                 <div onClick={async() => {
-                  const response = await axios.post("http://localhost:3000/api/v1/user/signup",{
+                  const response = await axios.post(API_BASE_URL+"/user/signup",{
                     firstName,
                     lastName,
                     username,
